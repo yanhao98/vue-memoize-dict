@@ -4,13 +4,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-devDependencies:
-  rimraf:
-    specifier: ^5.0.1
-    version: 5.0.1
-  typescript:
-    specifier: ^5.1.6
-    version: 5.1.6
+importers:
+
+  .: {}
+
+  packages/vue-tiny-dict:
+    devDependencies:
+      rimraf:
+        specifier: ^5.0.1
+        version: 5.0.1
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
 
 packages:
 

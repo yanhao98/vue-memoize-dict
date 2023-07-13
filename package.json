@@ -1,20 +1,13 @@
 {
-  "name": "vue-tiny-dict",
-  "version": "0.0.1",
-  "description": "",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
+  "name": "vue-tiny-dict-root",
+  "private": true,
+  "packageManager": "pnpm@8.6.6",
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "node_modules/.bin/rimraf dist && tsc",
-    "publish": "npm run build && npm publish --access public"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "rimraf": "^5.0.1",
-    "typescript": "^5.1.6"
+    "play": "pnpm run -r play",
+    "build": "pnpm run -r build",
+    "clean": "pnpm run -r clean"
   }
 }

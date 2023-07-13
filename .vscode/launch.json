@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "node-terminal",
+      "name": "运行脚本: play",
+      "request": "launch",
+      "command": "pnpm run play",
+      "cwd": "${workspaceFolder}/packages/playground"
+    }
+  ]
+}

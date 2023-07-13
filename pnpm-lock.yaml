@@ -13,6 +13,9 @@ importers:
       vue:
         specifier: ^3.3.4
         version: 3.3.4
+      vue-tiny-dict:
+        specifier: workspace:*
+        version: link:../vue-tiny-dict
     devDependencies:
       '@tsconfig/node18':
         specifier: ^2.0.1

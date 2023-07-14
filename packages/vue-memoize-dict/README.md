@@ -1,5 +1,7 @@
 # vue-memoize-dict
 
+vue-memoize-dict
+
 ## Install
 
 ```bash
@@ -41,12 +43,9 @@ const remoteDict = new MemoizeDict<any>({
 
   - https://github.com/HuangZhaoPing/vue-reactive-dataset
 
-
   - https://www.npmjs.com/package/tiny-dict-vue
 
-
   - https://juejin.cn/post/7118759300742414373#heading-3
-
 
 - Memorization
 

@@ -67,7 +67,7 @@ interface FieldNamesConfig {
 // type DictItem = ;
 // type DictArray<T> = Array<T>;
 
-interface DatasetConfig {
+export interface DatasetConfig {
   data(/* params?: Recordable<unknown> */): Promise<unknown[]>;
 }
 interface DatasetOptions {

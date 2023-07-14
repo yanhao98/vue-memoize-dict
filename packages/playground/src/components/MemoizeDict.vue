@@ -3,6 +3,7 @@
     <h1>MemoizeDict</h1>
     <button @click="onClear">.clear</button>
     <div style="padding:8px; border:1px solid blue;">
+
       <hr>
       <button @click="onLoad">.load</button>
       <button @click="onFetch">.fetch</button>
@@ -11,26 +12,32 @@
       </p>
       <p>
       <ul>
-        <li v-for="item in remoteDict.get(`channel`)">
+        <li v-for="item in localDict.get(`channel`)">
           {{ `id: ${item.id}, name: ${item.name}` }}
         </li>
       </ul>
       </p>
-      <p>{{ remoteDict.find('channel', 1) }}</p>
-      <p>{{ remoteDict.label('channel', 1) }}</p>
+      <p>{{ localDict.find('channel', 1) }}</p>
+      <p>{{ localDict.label('channel', 1) }}</p>
     </div>
+
     <hr>
     <div style="padding:8px; border:1px solid darkkhaki;">
-      <button @click="remoteDict.delete('sex')">.delete</button>
+      <button @click="localDict.delete('sex')">.delete</button>
       <div>{{ `sex data function call count: ${sexCount}` }}</div>
-      <p>{{ remoteDict.get(`sex`) }}</p>
+      <p>{{ localDict.get(`sex`) }}</p>
+    </div>
+
+    <hr>
+    <div style="padding:8px; border:1px solid darkkhaki;">
+      {{ remoteDict.get('dict-name') }}
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { MemoizeDict } from "vue-memoize-dict";
+
 const channelCount = ref(0);
 const sexCount = ref(0);
 
@@ -49,7 +56,7 @@ type DictData = {
   id: number;
 };
 
-const remoteDict = new MemoizeDict<DictData>({
+const localDict = new MemoizeDict<DictData>({
   fieldNames: {
     label: 'name',
     value: 'id'
@@ -77,7 +84,32 @@ const remoteDict = new MemoizeDict<DictData>({
   },
 });
 
-// const data = remoteDict.get(`channel`);
+import { MemoizeDict, type DatasetConfig } from "vue-memoize-dict";
+
+const remoteDict = new MemoizeDict<any>({
+  fieldNames: {
+    // label: '',
+    // value: ''
+  },
+  config: new Proxy(
+    {},
+    {
+      get: (target, key): DatasetConfig => {
+        return {
+          data: async () => {
+            await new Promise(r => setTimeout(r, 1000));
+            return Array.from({ length: 2 }).map((_, index) => ({
+              label: `${String(key)} ${index}`,
+              value: `${index}`.padStart(3, '0'),
+            }));
+          },
+        }
+      },
+    }
+  )
+});
+
+// const data = localDict.get(`channel`);
 // console.debug(`data :>> `, data);
 
 onMounted(() => {
@@ -87,7 +119,7 @@ onMounted(() => {
 async function onLoad() {
   console.group(`onLoad`);
   console.time(`onLoad`);
-  const data = await remoteDict.load(`channel`);
+  const data = await localDict.load(`channel`);
   console.debug(`data :>> `, data);
   console.timeEnd(`onLoad`);
   console.groupEnd();
@@ -96,14 +128,14 @@ async function onLoad() {
 async function onFetch() {
   console.group(`onFetch`);
   console.time(`onFetch`);
-  const data = await remoteDict.fetch(`channel`);
+  const data = await localDict.fetch(`channel`);
   console.debug(`data :>> `, data);
   console.timeEnd(`onFetch`);
   console.groupEnd();
 }
 
 function onClear() {
-  remoteDict.clear();
+  localDict.clear();
 }
 </script>
 

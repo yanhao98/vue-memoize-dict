@@ -1,4 +1,6 @@
 import { computedAsync, useMemoize } from "@vueuse/core";
+import { isVue2 } from "vue-demi";
+
 type AsyncComputedReturnType<T> = ReturnType<typeof computedAsync<T>>;
 
 export class MemoizeDict<DictItem = Record<string, unknown>> {
@@ -7,6 +9,8 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
   private computedMap: Map<string, AsyncComputedReturnType<DictItem[] | undefined>> = new Map();
 
   constructor(options: DatasetOptions) {
+    console.debug(`isVue2 :>> `, isVue2);
+
     this.options = options;
     this.memoFetch = useMemoize(this._fetch.bind(this));
   }

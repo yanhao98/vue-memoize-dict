@@ -1,5 +1,5 @@
 {
-  "name": "vue-tiny-dict-root",
+  "name": "vue-memoize-dict-root",
   "private": true,
   "packageManager": "pnpm@8.6.6",
   "workspaces": [

@@ -9,9 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "vue-tiny-dict": fileURLToPath(
-        new URL("../vue-tiny-dict/src", import.meta.url)
-      ),
+      "vue-memoize-dict": fileURLToPath(new URL("../vue-memoize-dict/src", import.meta.url)),
     },
   },
 });

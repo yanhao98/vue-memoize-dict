@@ -1,1 +1,1 @@
-# vue-tiny-dict
+# vue-memoize-dict

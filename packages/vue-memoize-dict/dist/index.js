@@ -11,9 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MemoizeDict = void 0;
 const core_1 = require("@vueuse/core");
+const vue_demi_1 = require("vue-demi");
 class MemoizeDict {
     constructor(options) {
         this.computedMap = new Map();
+        console.debug(`isVue2 :>> `, vue_demi_1.isVue2);
         this.options = options;
         this.memoFetch = (0, core_1.useMemoize)(this._fetch.bind(this));
     }

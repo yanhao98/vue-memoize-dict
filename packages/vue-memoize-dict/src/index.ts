@@ -1,11 +1,10 @@
-import { useMemoize, asyncComputed } from "@vueuse/core";
-// import { type Ref } from "vue";
-type AsyncComputedReturnType<T> = ReturnType<typeof asyncComputed<T>>;
+import { computedAsync, useMemoize } from "@vueuse/core";
+type AsyncComputedReturnType<T> = ReturnType<typeof computedAsync<T>>;
 
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options: DatasetOptions;
   private memoFetch;
-  private asyncComputedMap: Map<string, AsyncComputedReturnType<DictItem[] | undefined>> = new Map();
+  private computedMap: Map<string, AsyncComputedReturnType<DictItem[] | undefined>> = new Map();
 
   constructor(options: DatasetOptions) {
     this.options = options;
@@ -13,11 +12,13 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
   }
 
   public get(dictName: string) {
-    if (!this.asyncComputedMap.has(dictName)) {
-      const asyncComputedRef = asyncComputed(() => this.memoFetch(dictName));
-      this.asyncComputedMap.set(dictName, asyncComputedRef);
+    if (!this.computedMap.has(dictName)) {
+      const asyncComputedRef = computedAsync(() => {
+        return this.memoFetch(dictName);
+      });
+      this.computedMap.set(dictName, asyncComputedRef);
     }
-    const computedRef = this.asyncComputedMap.get(dictName)!;
+    const computedRef = this.computedMap.get(dictName)!;
     return computedRef.value;
   }
 

@@ -1,7 +1,7 @@
 export declare class MemoizeDict<DictItem = Record<string, unknown>> {
     private options;
     private memoFetch;
-    private asyncComputedMap;
+    private computedMap;
     constructor(options: DatasetOptions);
     get(dictName: string): DictItem[] | undefined;
     fetch(dictName: string): Promise<DictItem[]>;

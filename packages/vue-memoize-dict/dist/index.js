@@ -13,16 +13,18 @@ exports.MemoizeDict = void 0;
 const core_1 = require("@vueuse/core");
 class MemoizeDict {
     constructor(options) {
-        this.asyncComputedMap = new Map();
+        this.computedMap = new Map();
         this.options = options;
         this.memoFetch = (0, core_1.useMemoize)(this._fetch.bind(this));
     }
     get(dictName) {
-        if (!this.asyncComputedMap.has(dictName)) {
-            const asyncComputedRef = (0, core_1.asyncComputed)(() => this.memoFetch(dictName));
-            this.asyncComputedMap.set(dictName, asyncComputedRef);
+        if (!this.computedMap.has(dictName)) {
+            const asyncComputedRef = (0, core_1.computedAsync)(() => {
+                return this.memoFetch(dictName);
+            });
+            this.computedMap.set(dictName, asyncComputedRef);
         }
-        const computedRef = this.asyncComputedMap.get(dictName);
+        const computedRef = this.computedMap.get(dictName);
         return computedRef.value;
     }
     fetch(dictName) {

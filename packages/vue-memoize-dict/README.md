@@ -11,7 +11,8 @@ pnpm add vue-memoize-dict
 ## Usage
 
 ```ts
-import { MemoizeDict, type DatasetConfig } from "vue-memoize-dict";
+import { MemoizeDict } from "vue-memoize-dict";
+import type { DatasetConfig } from "vue-memoize-dict";
 
 const remoteDict = new MemoizeDict<any>({
   fieldNames: {

@@ -16,7 +16,7 @@ const config = defineConfig({
       format: "es",
     },
   ],
-  // external: ["vue-demi", "@vueuse/core"],
+  external: ["vue-demi", "@vueuse/core"],
   plugins: [typescript()],
 });
 

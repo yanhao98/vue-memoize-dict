@@ -1,4 +1,4 @@
-import { computedAsync } from "./computedAsync";
+import { computedAsync } from "@vueuse/core";
 import { useMemoize } from "./useMemoize";
 
 type AsyncComputedReturnType<T> = ReturnType<typeof computedAsync<T>>;

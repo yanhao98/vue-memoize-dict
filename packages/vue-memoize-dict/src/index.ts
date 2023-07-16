@@ -59,8 +59,6 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return (await config.data()) as DictItem[];
   }
 }
-
-type Nullable<T> = T | undefined;
 interface FieldNamesConfig {
   label?: string;
   value?: string;
@@ -73,6 +71,6 @@ export interface DatasetConfig {
   data(/* params?: Recordable<unknown> */): Promise<unknown[]>;
 }
 interface DatasetOptions {
-  config: Record<string, Nullable<DatasetConfig>>;
+  config: Record<string, DatasetConfig | undefined>;
   fieldNames?: FieldNamesConfig;
 }

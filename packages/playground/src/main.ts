@@ -1,4 +1,14 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import { remoteDict } from "./dict";
+const app = createApp(App)
 
-createApp(App).mount("#app");
+app.config.globalProperties.$remoteDict = remoteDict
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $remoteDict: typeof remoteDict
+  }
+}
+
+
+app.mount("#app");

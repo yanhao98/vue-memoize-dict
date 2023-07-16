@@ -27,13 +27,6 @@
       <div>{{ `sex data function call count: ${sexCount}` }}</div>
       <p>{{ localDict.get(`sex`) }}</p>
     </div>
-
-    <hr>
-    <div style="padding:8px; border:1px solid darkkhaki;">
-      <div>{{ remoteDict.get('dict-name-1') }}</div>
-      <div>{{ remoteDict.get('dict-name-1') }}</div>
-      <div>{{ remoteDict.get('dict-name-2') }}</div>
-    </div>
   </div>
 </template>
 
@@ -55,11 +48,8 @@ const data2 = [
 ];
 
 type DictData = {
-  name?: string;
+  name: string;
   id: number;
-  label?: string;
-  value?: string;
-  // [key: string]: any;
 };
 
 const localDict = new MemoizeDict<DictData>({
@@ -90,31 +80,6 @@ const localDict = new MemoizeDict<DictData>({
   },
 });
 
-type RemoteDict = MemoizeDict<DictData>;
-
-const remoteDict: RemoteDict = new MemoizeDict({
-  fieldNames: {
-    // label: '',
-    // value: ''
-  },
-  config: new Proxy(
-    {},
-    {
-      get: (target, key): RemoteDict['options']['config'][string] => {
-        return {
-          data: async () => {
-            await new Promise(r => setTimeout(r, 1000));
-            return Array.from({ length: 2 }).map((_, index) => ({
-              label: `${String(key)} ${index}`,
-              id: index,
-              value: `${index}`.padStart(3, '0'),
-            }));
-          },
-        }
-      },
-    }
-  )
-});
 
 onMounted(() => {
   console.debug(`MemoizeDict onMounted`);

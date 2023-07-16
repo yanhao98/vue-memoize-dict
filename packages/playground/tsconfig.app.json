@@ -5,6 +5,8 @@
   "compilerOptions": {
     "composite": false,
     "baseUrl": ".",
+    "skipDefaultLibCheck": false,
+    "skipLibCheck": false,
     "paths": {
       "@/*": ["./src/*"],
       "vue-memoize-dict": ["../vue-memoize-dict/src"]

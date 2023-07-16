@@ -5,6 +5,12 @@ import MemoizeDict from "./components/MemoizeDict.vue";
 <template>
   <div>
     <MemoizeDict />
+    <div>
+      <div style="padding:8px; border:1px solid orange;">
+        <div>{{ $remoteDict.get('dict-name-1') }}</div>
+        <div>{{ $remoteDict.get('dict-name-2') }}</div>
+      </div>
+    </div>
   </div>
 </template>
 

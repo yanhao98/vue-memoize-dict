@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import UseMemoizeComp from "./components/UseMemoizeComp.vue";
 import MemoizeDict from "./components/MemoizeDict.vue";
 </script>
 
 <template>
   <div>
-    <!-- <UseMemoizeComp /> -->
     <MemoizeDict />
   </div>
 </template>

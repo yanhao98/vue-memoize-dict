@@ -30,7 +30,9 @@
 
     <hr>
     <div style="padding:8px; border:1px solid darkkhaki;">
-      {{ remoteDict.get('dict-name') }}
+      <div>{{ remoteDict.get('dict-name-1') }}</div>
+      <div>{{ remoteDict.get('dict-name-1') }}</div>
+      <div>{{ remoteDict.get('dict-name-2') }}</div>
     </div>
   </div>
 </template>

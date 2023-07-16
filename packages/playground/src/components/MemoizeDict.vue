@@ -39,6 +39,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { MemoizeDict } from "vue-memoize-dict";
 
 const channelCount = ref(0);
 const sexCount = ref(0);
@@ -54,8 +55,11 @@ const data2 = [
 ];
 
 type DictData = {
-  name: string;
+  name?: string;
   id: number;
+  label?: string;
+  value?: string;
+  // [key: string]: any;
 };
 
 const localDict = new MemoizeDict<DictData>({
@@ -86,9 +90,9 @@ const localDict = new MemoizeDict<DictData>({
   },
 });
 
-import { MemoizeDict, type DatasetConfig } from "vue-memoize-dict";
+type RemoteDict = MemoizeDict<DictData>;
 
-const remoteDict = new MemoizeDict<any>({
+const remoteDict: RemoteDict = new MemoizeDict({
   fieldNames: {
     // label: '',
     // value: ''
@@ -96,12 +100,13 @@ const remoteDict = new MemoizeDict<any>({
   config: new Proxy(
     {},
     {
-      get: (target, key): DatasetConfig => {
+      get: (target, key): RemoteDict['options']['config'][string] => {
         return {
           data: async () => {
             await new Promise(r => setTimeout(r, 1000));
             return Array.from({ length: 2 }).map((_, index) => ({
               label: `${String(key)} ${index}`,
+              id: index,
               value: `${index}`.padStart(3, '0'),
             }));
           },
@@ -110,9 +115,6 @@ const remoteDict = new MemoizeDict<any>({
     }
   )
 });
-
-// const data = localDict.get(`channel`);
-// console.debug(`data :>> `, data);
 
 onMounted(() => {
   console.debug(`MemoizeDict onMounted`);

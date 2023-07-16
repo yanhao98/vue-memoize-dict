@@ -3,11 +3,11 @@ import { computedAsync, useMemoize } from "@vueuse/core";
 type AsyncComputedReturnType<T> = ReturnType<typeof computedAsync<T>>;
 
 export class MemoizeDict<DictItem = Record<string, unknown>> {
-  private options: DatasetOptions;
+  private options;
   private memoFetch;
   private computedMap: Map<string, AsyncComputedReturnType<DictItem[] | undefined>> = new Map();
 
-  constructor(options: DatasetOptions) {
+  constructor(options: DatasetOptions<DictItem>) {
     this.options = options;
     this.memoFetch = useMemoize(this._fetch.bind(this));
   }
@@ -59,18 +59,17 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return (await config.data()) as DictItem[];
   }
 }
-interface FieldNamesConfig {
-  label?: string;
-  value?: string;
+interface FieldNamesConfig<DictItem> {
+  label?: keyof DictItem;
+  value?: keyof DictItem;
 }
 
-// type DictItem = ;
 // type DictArray<T> = Array<T>;
 
-export interface DatasetConfig {
-  data(/* params?: Recordable<unknown> */): Promise<unknown[]>;
+interface DatasetConfig<DictItem = Record<string, unknown>> {
+  data(/* params?: Recordable<unknown> */): Promise<DictItem[]>;
 }
-interface DatasetOptions {
-  config: Record<string, DatasetConfig | undefined>;
-  fieldNames?: FieldNamesConfig;
+interface DatasetOptions<DictItem> {
+  config: Record<string, DatasetConfig<DictItem> | undefined>;
+  fieldNames?: FieldNamesConfig<DictItem>;
 }

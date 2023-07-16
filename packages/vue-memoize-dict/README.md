@@ -12,9 +12,14 @@ pnpm add vue-memoize-dict
 
 ```ts
 import { MemoizeDict } from "vue-memoize-dict";
-import type { DatasetConfig } from "vue-memoize-dict";
 
-const remoteDict = new MemoizeDict<any>({
+type DictData = {
+  [key: string]: string | number | undefined;
+};
+
+type RemoteDict = MemoizeDict<DictData>;
+
+const remoteDict: RemoteDict = new MemoizeDict({
   fieldNames: {
     // label: '',
     // value: ''
@@ -22,7 +27,7 @@ const remoteDict = new MemoizeDict<any>({
   config: new Proxy(
     {},
     {
-      get: (target, key): DatasetConfig => {
+      get: (_, key): RemoteDict["options"]["config"][string] => {
         return {
           data: async () => {
             await new Promise((r) => setTimeout(r, 1000));

@@ -14,6 +14,8 @@ https://stackblitz.com/~/github.com/yanhao98/vue-memoize-dict
 
 ## Usage
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/yanhao98/vue-memoize-dict?file=packages/playground/src/components/MemoizeDict.vue)
+
 ```ts
 import { MemoizeDict } from "vue-memoize-dict";
 

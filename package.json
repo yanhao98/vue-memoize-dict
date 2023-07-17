@@ -9,5 +9,8 @@
     "play": "pnpm run -r play",
     "build": "pnpm run -r build",
     "clean": "pnpm run -r clean"
+  },
+  "stackblitz": {
+    "startCommand": "pnpm play"
   }
 }

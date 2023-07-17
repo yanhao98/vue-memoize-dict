@@ -8,6 +8,10 @@ vue-memoize-dict
 pnpm add vue-memoize-dict
 ```
 
+## StackBlitz
+
+https://stackblitz.com/~/github.com/yanhao98/vue-memoize-dict
+
 ## Usage
 
 ```ts

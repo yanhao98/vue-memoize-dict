@@ -9,7 +9,11 @@
     "play": "pnpm run -r play",
     "build": "pnpm run -r build",
     "clean": "pnpm run -r clean",
-    "publish": "pnpm run -r publish"
+    "publish:ci": "esno scripts/publish.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "esno": "^0.17.0"
   },
   "stackblitz": {
     "startCommand": "pnpm play"

@@ -9,7 +9,7 @@
     "play": "pnpm run -r play",
     "build": "pnpm run -r build",
     "clean": "pnpm run -r clean",
-    "publish": "npm publish --access public vue-memoize-dict"
+    "publish": "pnpm run build && npm publish --access public vue-memoize-dict"
   },
   "stackblitz": {
     "startCommand": "pnpm play"

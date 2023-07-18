@@ -8,13 +8,9 @@ vue-memoize-dict
 pnpm add vue-memoize-dict
 ```
 
-## StackBlitz
-
-https://stackblitz.com/~/github.com/yanhao98/vue-memoize-dict
-
 ## Usage
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/yanhao98/vue-memoize-dict?file=packages/playground/src/components/MemoizeDict.vue)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/yanhao98/vue-memoize-dict?file=packages/playground/src/components/MemoizeDict.vue)
 
 ```ts
 import { MemoizeDict } from "vue-memoize-dict";
@@ -51,6 +47,8 @@ const remoteDict: RemoteDict = new MemoizeDict({
 
 ## Reference Links
 
+- https://vueuse.org/core/useMemoize
+
 - vue-reactive-dataset
 
   - https://github.com/HuangZhaoPing/vue-reactive-dataset
@@ -73,4 +71,3 @@ const remoteDict: RemoteDict = new MemoizeDict({
 - decorators
   - https://juejin.cn/post/6844903876605280269
   - https://github.com/darrylhodgins/typescript-memoize
-- https://vueuse.org/core/useMemoize

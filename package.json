@@ -8,7 +8,8 @@
   "scripts": {
     "play": "pnpm run -r play",
     "build": "pnpm run -r build",
-    "clean": "pnpm run -r clean"
+    "clean": "pnpm run -r clean",
+    "publish": "pnpm run -r publish"
   },
   "stackblitz": {
     "startCommand": "pnpm play"

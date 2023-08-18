@@ -27,6 +27,9 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return this.memoFetch(dictName);
   }
 
+  /**
+   * Call memoized function and update cache
+   */
   public load(dictName: string) {
     return this.memoFetch.load(dictName);
   }

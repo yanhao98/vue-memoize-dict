@@ -23,6 +23,9 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return computedRef.value;
   }
 
+  /**
+   * Call memoized function
+   */
   public fetch(dictName: string) {
     return this.memoFetch(dictName);
   }
@@ -34,10 +37,16 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return this.memoFetch.load(dictName);
   }
 
+  /**
+   * Clear cache
+   */
   public clear() {
     return this.memoFetch.clear();
   }
 
+  /**
+   * Delete cache of given key
+   */
   public delete(dictName: string) {
     return this.memoFetch.delete(dictName);
   }

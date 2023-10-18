@@ -12,7 +12,7 @@
     "publish:ci": "esno scripts/publish.ts"
   },
   "devDependencies": {
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.8.6",
     "esno": "^0.17.0"
   },
   "stackblitz": {

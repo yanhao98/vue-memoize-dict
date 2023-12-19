@@ -1,11 +1,9 @@
 {
   "name": "vue-memoize-dict",
-  "version": "0.0.20-beta.3",
+  "version": "0.0.20-beta.4",
   "description": "Vue Memoize Dict",
   "files": [
-    "dist",
-    "./index.cjs",
-    "./index.mjs"
+    "dist"
   ],
   "scripts": {
     "build": "pnpm run clean && rollup -c",
@@ -18,16 +16,12 @@
     "url": "https://github.com/yanhao98/vue-memoize-dict"
   },
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.cjs"
-    }
-  },
-  "main": "./index.cjs",
-  "module": "./index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "^20.10.5",
     "rimraf": "^5.0.5",

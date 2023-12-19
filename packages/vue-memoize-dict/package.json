@@ -1,6 +1,6 @@
 {
   "name": "vue-memoize-dict",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "",
   "files": [
     "dist"
@@ -15,18 +15,18 @@
     "type": "git",
     "url": "https://github.com/yanhao98/vue-memoize-dict"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.5",
-    "@types/node": "^20.8.6",
+    "@types/node": "^20.10.5",
     "rimraf": "^5.0.5",
-    "rollup": "^4.1.4",
+    "rollup": "^4.9.1",
     "tslib": "^2.6.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@vueuse/core": "^10.5.0"
+    "@vueuse/core": "^10.7.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "vue-memoize-dict",
-  "version": "0.0.21-beta.2",
+  "version": "1.0.0-beta.0",
   "description": "Vue Memoize Dict",
   "files": [
     "dist"
@@ -16,11 +16,8 @@
     "type": "git",
     "url": "https://github.com/yanhao98/vue-memoize-dict"
   },
-  "exports": {
-    "import": "./dist/index.esm.js",
-    "require": "./dist/index.cjs.js",
-    "types": "./dist/index.d.ts"
-  },
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",

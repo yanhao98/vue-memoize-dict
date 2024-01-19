@@ -12,7 +12,7 @@ const config = defineConfig({
       format: "cjs",
     }, */
     {
-      file: pkg.exports.import,
+      file: pkg.module,
       format: "esm",
     },
   ],

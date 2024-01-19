@@ -7,10 +7,10 @@ import pkg from "./package.json" assert { type: "json" };
 const config = defineConfig({
   input: "src/index.ts",
   output: [
-    /* {
-      file: pkg.exports.require,
+    {
+      file: pkg.main,
       format: "cjs",
-    }, */
+    },
     {
       file: pkg.module,
       format: "esm",

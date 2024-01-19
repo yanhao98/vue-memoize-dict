@@ -71,3 +71,5 @@ const remoteDict: RemoteDict = new MemoizeDict({
 - decorators
   - https://juejin.cn/post/6844903876605280269
   - https://github.com/darrylhodgins/typescript-memoize
+-
+  - https://stackoverflow.com/a/71088004

@@ -1,21 +1,38 @@
 {
-  "name": "vue-memoize-dict-root",
-  "private": true,
-  "packageManager": "pnpm@8.6.6",
-  "workspaces": [
-    "packages/*"
+  "name": "vue-memoize-dict",
+  "version": "0.0.21-beta.0",
+  "description": "Vue Memoize Dict",
+  "files": [
+    "dist"
   ],
   "scripts": {
-    "play": "pnpm run -r play",
-    "build": "pnpm run -r build",
-    "clean": "pnpm run -r clean",
-    "publish:ci": "esno scripts/publish.ts"
+    "build": "pnpm run clean && rollup -c",
+    "clean": "rimraf dist",
+    "prepublishOnly": "pnpm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yanhao98/vue-memoize-dict"
+  },
+  "exports": {
+    "import": "./dist/index.esm.js",
+    "require": "./dist/index.cjs.js",
+    "types": "./dist/index.d.ts"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "^20.10.5",
-    "esno": "^4.0.0"
+    "@vueuse/core": "^10.7.2",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.9.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   },
-  "stackblitz": {
-    "startCommand": "pnpm play"
+  "dependencies": {
+    "vue-demi": ">=0.14.6"
   }
 }

@@ -6,12 +6,11 @@ permissions:
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - v*
 
 jobs:
   publish-npm:
-    # if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,9 +28,17 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: pnpm
 
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
 
-      - run: pnpm run publish:ci
+      - name: Set publish args if beta version
+        run: |
+          if grep -q "-beta" package.json; then
+            echo "PUBLISH_ARGS=--tag beta" >> $GITHUB_ENV
+            echo "This is a beta version 🅱️"
+          fi
+
+      - name: Publish to npm
+        run: npm publish --access public $PUBLISH_ARGS
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true

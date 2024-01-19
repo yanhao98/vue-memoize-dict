@@ -8,7 +8,10 @@
   "scripts": {
     "build": "pnpm run clean && rollup -c",
     "clean": "rimraf dist",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +31,8 @@
     "rimraf": "^5.0.5",
     "rollup": "^4.9.1",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitepress": "1.0.0-rc.39"
   },
   "dependencies": {
     "vue-demi": ">=0.14.6"

@@ -2,6 +2,8 @@ import { computedAsync, useMemoize } from "@vueuse/core";
 
 type AsyncComputedReturnType<T> = ReturnType<typeof computedAsync<T>>;
 
+type NumericOrString = number | string;
+
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options;
   private memoFetch;
@@ -51,16 +53,31 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return this.memoFetch.delete(dictName);
   }
 
-  public find(dictName: string, value: string | number) {
-    const valueFieldName = this.options.fieldNames?.value || "value";
+  public find(dictName: string, value: keyof DictItem | NumericOrString): DictItem | undefined {
     const dict = this.get(dictName);
-    return dict?.find((item) => item[valueFieldName as keyof typeof item] === value);
+    return dict?.find((item) => item[this._valueFieldName!] === value);
   }
 
-  public label(dictName: string, value: string | number) {
-    const labelFieldName = this.options.fieldNames?.label || "label";
+  public label(dictName: string, value: keyof DictItem | NumericOrString): string {
     const item = this.find(dictName, value);
-    return item?.[labelFieldName as keyof typeof item];
+    return item?.[this._labelFieldName!] as string || value as string;
+  }
+
+  public fullLabel(dictName: string, value: NumericOrString): string {
+    const item = this.find(dictName, value);
+    if (!item) return "";
+
+    let fullLabel = this.label(dictName, value);
+    let currentItem = item;
+
+    while (currentItem[this._parentFieldName!]) {
+      const parentItem = this.find(dictName, currentItem[this._parentFieldName!] as string);
+      if (!parentItem) break;
+      fullLabel = `${this.label(dictName, parentItem[this._labelFieldName!] as string)}-${fullLabel}`;
+      currentItem = parentItem;
+    }
+
+    return fullLabel
   }
 
   private async _fetch(dictName: string): Promise<DictItem[]> {
@@ -70,10 +87,20 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     }
     return (await config.data()) as DictItem[];
   }
+  private get _valueFieldName() {
+    return this.options.fieldNames?.value || "value" as keyof DictItem;
+  }
+  private get _labelFieldName() {
+    return this.options.fieldNames?.label || "label" as keyof DictItem;
+  }
+  private get _parentFieldName() {
+    return this.options.fieldNames?.parent || "parent" as keyof DictItem;
+  }
 }
 interface FieldNamesConfig<DictItem> {
   label?: keyof DictItem;
   value?: keyof DictItem;
+  parent?: keyof DictItem;
 }
 
 // type DictArray<T> = Array<T>;

@@ -1,6 +1,6 @@
 {
   "name": "vue-memoize-dict",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.1",
   "description": "Vue Memoize Dict",
   "files": [
     "dist"
@@ -25,14 +25,14 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@types/node": "^20.10.5",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.11.5",
     "@vueuse/core": "^10.7.2",
     "rimraf": "^5.0.5",
-    "rollup": "^4.9.1",
+    "rollup": "^4.9.6",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3",
-    "vitepress": "1.0.0-rc.39"
+    "vitepress": "1.0.0-rc.40"
   },
   "dependencies": {
     "vue-demi": ">=0.14.6"

@@ -1,8 +1,7 @@
+// https://github.com/yanhao98/vue-memoize-dict/blob/a1f73b60b0b51823ffb3dc5ed4606f3f8d0bb644/packages/playground/src/components/MemoizeDict.vue
 import { computedAsync, useMemoize } from "@vueuse/core";
 
 type AsyncComputedReturnType<T> = ReturnType<typeof computedAsync<T>>;
-
-type NumericOrString = number | string;
 
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options;
@@ -53,27 +52,27 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return this.memoFetch.delete(dictName);
   }
 
-  public find(dictName: string, value: keyof DictItem | NumericOrString): DictItem | undefined {
+  public find(dictName: string, value: DictItem[keyof DictItem]): DictItem | undefined {
     const dict = this.get(dictName);
-    return dict?.find((item) => item[this._valueFieldName!] === value);
+    return dict?.find((item) => item[this._valueFieldName] === value);
   }
 
-  public label(dictName: string, value: keyof DictItem | NumericOrString): string {
+  public label(dictName: string, value: DictItem[keyof DictItem]): string {
     const item = this.find(dictName, value);
-    return item?.[this._labelFieldName!] as string || value as string;
+    return item?.[this._labelFieldName] as string || `${value}`
   }
 
-  public fullLabel(dictName: string, value: NumericOrString): string {
+  public fullLabel(dictName: string, value: DictItem[keyof DictItem]): string {
     const item = this.find(dictName, value);
-    if (!item) return "";
+    if (!item) return `${value}`;
 
     let fullLabel = this.label(dictName, value);
     let currentItem = item;
 
-    while (currentItem[this._parentFieldName!]) {
-      const parentItem = this.find(dictName, currentItem[this._parentFieldName!] as string);
+    while (currentItem[this._parentFieldName]) {
+      const parentItem = this.find(dictName, currentItem[this._parentFieldName]);
       if (!parentItem) break;
-      fullLabel = `${this.label(dictName, parentItem[this._labelFieldName!] as string)}-${fullLabel}`;
+      fullLabel = `${this.label(dictName, parentItem[this._labelFieldName])}-${fullLabel}`;
       currentItem = parentItem;
     }
 
@@ -88,13 +87,13 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return (await config.data()) as DictItem[];
   }
   private get _valueFieldName() {
-    return this.options.fieldNames?.value || "value" as keyof DictItem;
+    return (this.options.fieldNames?.value || "value") as keyof DictItem;
   }
   private get _labelFieldName() {
-    return this.options.fieldNames?.label || "label" as keyof DictItem;
+    return (this.options.fieldNames?.label || "label") as keyof DictItem;
   }
   private get _parentFieldName() {
-    return this.options.fieldNames?.parent || "parent" as keyof DictItem;
+    return (this.options.fieldNames?.parent || "parent") as keyof DictItem;
   }
 }
 interface FieldNamesConfig<DictItem> {

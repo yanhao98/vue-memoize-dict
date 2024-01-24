@@ -58,11 +58,15 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
   }
 
   public label(dictName: string, value: DictItem[keyof DictItem]): string {
+    if (!value) return '';
+
     const item = this.find(dictName, value);
     return item?.[this._labelFieldName] as string || `${value}`
   }
 
   public fullLabel(dictName: string, value: DictItem[keyof DictItem]): string {
+    if (!value) return '';
+
     const item = this.find(dictName, value);
     if (!item) return `${value}`;
 

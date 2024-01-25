@@ -65,9 +65,12 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     return item?.[this._labelFieldName] as string || `${value}`
   }
   public labels(dictName: string, values: DictItem[keyof DictItem][]): string[] {
+    if (values === undefined || values === null)
+      return []
+
     if (!Array.isArray(values)) {
       console.error('[vue-memoize-dict] labels: values is not array', values)
-      return []
+      return values
     }
 
     return values

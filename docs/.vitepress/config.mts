@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import MarkdownPreview from 'vite-plugin-markdown-preview'
+import path from 'path'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -25,5 +27,13 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
-  }
+  },
+  vite: {
+    plugins: [MarkdownPreview()],
+    resolve: {
+      alias: {
+        'vue-memoize-dict': path.resolve(__dirname, '../../', 'src/index.ts'),
+      },
+    }
+  },
 })

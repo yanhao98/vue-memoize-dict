@@ -24,5 +24,7 @@ export const remoteDict = new MemoizeDict<DictData>({
   ),
 });
 
-// @ts-ignore
-window.remoteDict = remoteDict;
+if (typeof window !== 'undefined') {
+  // @ts-ignore
+  window.remoteDict = remoteDict;
+}

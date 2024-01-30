@@ -1,6 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-// import commonjs from '@rollup/plugin-commonjs';
 import { defineConfig } from "rollup";
 import pkg from "./package.json" assert { type: "json" };
 
@@ -23,7 +22,6 @@ const config = defineConfig({
   plugins: [
     typescript(),
     nodeResolve(),
-    // commonjs(),
   ],
 });
 

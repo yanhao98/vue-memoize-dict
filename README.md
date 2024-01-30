@@ -1,49 +1,10 @@
 # vue-memoize-dict
 
-vue-memoize-dict
+vue-memoize-dict is a Vue dictionary cache, support Vue2 and Vue3.
 
-## Install
+## Docs
 
-```bash
-pnpm add vue-memoize-dict
-```
-
-## Usage
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/yanhao98/vue-memoize-dict?file=packages/playground/src/components/MemoizeDict.vue)
-
-```ts
-import { MemoizeDict } from "vue-memoize-dict";
-
-type DictData = {
-  [key: string]: string | number | undefined;
-};
-
-type RemoteDict = MemoizeDict<DictData>;
-
-const remoteDict: RemoteDict = new MemoizeDict({
-  fieldNames: {
-    // label: '',
-    // value: ''
-  },
-  config: new Proxy(
-    {},
-    {
-      get: (_, key): RemoteDict["options"]["config"][string] => {
-        return {
-          data: async () => {
-            await new Promise((r) => setTimeout(r, 1000));
-            return Array.from({ length: 2 }).map((_, index) => ({
-              label: `${String(key)} ${index}`,
-              value: `${index}`.padStart(3, "0"),
-            }));
-          },
-        };
-      },
-    }
-  ),
-});
-```
+https://vue-memoize-dict.oo1.dev/
 
 ## Reference Links
 

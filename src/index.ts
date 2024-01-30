@@ -96,6 +96,9 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
 
     return fullLabel
   }
+  public treeLabel(dictName: string, value: DictItem[keyof DictItem]): string {
+    return this.fullLabel(dictName, value);
+  }
 
   private _fetch(dictName: string): Promise<DictItem[]> & { __computedAsyncRef__?: ReturnType<typeof computedAsync<DictItem[]>> } {
     const config = this.options.config[dictName];

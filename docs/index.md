@@ -1,25 +1,19 @@
----
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
+# vue-memoize-dict
 
-hero:
-  name: "Vue Memoize Dict"
-  text: "A VitePress Site"
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+Vue 字典缓存，支持 Vue2 和 Vue3。
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
----
+## 安装  {#install}
+```sh [pnpm]
+$ pnpm add vue-memoize-dict
+```
 
+## 新建字典对象 {#create-dict}
+<<< @/dict.ts{18-21}
+
+## 使用字典对象 {#use-dict}
+<!-- https://github.com/flingyp/vitepress-demo-preview -->
+
+<!-- :::preview title || component description content -->
+:::preview
+demo-preview=./demo.vue
+:::

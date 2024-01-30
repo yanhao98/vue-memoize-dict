@@ -57,6 +57,9 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     const dict = this.get(dictName);
     return dict?.find((item) => item[this._valueFieldName] === value);
   }
+  public item(dictName: string, value: DictItem[keyof DictItem]): DictItem | undefined {
+    return this.find(dictName, value);
+  }
 
   public label(dictName: string, value: DictItem[keyof DictItem]): string {
     if (!value) return '';

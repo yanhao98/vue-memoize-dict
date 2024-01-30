@@ -20,7 +20,9 @@ const config = defineConfig({
     // "@vueuse/core"
   ],
   plugins: [
-    typescript(),
+    typescript({
+      rootDir: "src",
+    }),
     nodeResolve(),
   ],
 });

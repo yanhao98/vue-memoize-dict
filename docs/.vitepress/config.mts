@@ -6,11 +6,24 @@ import { containerPreview, componentPreview } from '@vitepress-demo-preview/plug
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Vue Memoize Dict",
+  lang: 'zh-CN',
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      themeConfig: {
+        outline: {
+          label: '页面导航',
+          level: 'deep'
+        }
+      }
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     socialLinks: [
       { icon: 'github', link: 'https://github.com/yanhao98/vue-memoize-dict' }
-    ]
+    ],
   },
   vite: {
     plugins: [],

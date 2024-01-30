@@ -1,6 +1,7 @@
 # vue-memoize-dict
 
 Vue 字典缓存，支持 Vue2 和 Vue3。
+[[toc]]
 
 ## 安装  {#install}
 ```sh [pnpm]
@@ -8,12 +9,55 @@ $ pnpm add vue-memoize-dict
 ```
 
 ## 新建字典对象 {#create-dict}
+dict.ts:
+
 <<< @/dict.ts{18-21}
 
-## 使用字典对象 {#use-dict}
-<!-- https://github.com/flingyp/vitepress-demo-preview -->
+## API
 
-<!-- :::preview title || component description content -->
+### get()
 :::preview
-demo-preview=./demo.vue
+demo-preview=./demo-get.vue
 :::
+
+### item()
+:::preview
+demo-preview=./demo-item.vue
+:::
+
+### label()
+:::preview
+demo-preview=./demo-label.vue
+:::
+
+### treeLabel()
+
+
+### labels()
+:::preview
+demo-preview=./demo-labels.vue
+:::
+
+### fetch()
+```ts
+remoteDict.fetch("food").then((res) => {
+  console.log(res);
+});
+```
+
+### load()
+```ts
+remoteDict.load("food").then((res) => {
+  console.log(res);
+});
+```
+
+### delete()
+```ts
+remoteDict.delete("food");
+```
+
+### clear()
+```ts
+remoteDict.clear();
+```

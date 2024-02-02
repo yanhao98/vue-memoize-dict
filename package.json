@@ -1,6 +1,6 @@
 {
   "name": "vue-memoize-dict",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "vue-memoize-dict is a Vue dictionary cache, support Vue2 and Vue3.",
   "main": "lib/index.esm.js",
   "typings": "lib/index.d.ts",

@@ -6,9 +6,9 @@ import pkg from "./package.json" assert { type: "json" };
 const config = defineConfig([
   {
     input: "src/index.ts",
-    sourcemap: true,
+    // sourcemap: true,
     output: [
-      { format: "esm", file: pkg.main, },
+      { format: "esm", file: pkg.main, sourcemap: true },
     ],
     external: [
       "vue-demi",

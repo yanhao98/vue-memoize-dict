@@ -6,6 +6,7 @@ import { containerPreview, componentPreview } from '@vitepress-demo-preview/plug
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Vue Memoize Dict",
+  description: "vue-memoize-dict is a Vue dictionary cache, support Vue2 and Vue3.",
   lang: 'zh-CN',
   locales: {
     root: {
@@ -39,5 +40,9 @@ export default defineConfig({
       md.use(containerPreview)
       md.use(componentPreview)
     }
+  },
+  lastUpdated: true,
+  sitemap: {
+    hostname: 'https://vue-memoize-dict.oo1.dev'
   }
 })

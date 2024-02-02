@@ -15,7 +15,7 @@ export const remoteDict = new MemoizeDict<DictData>({
   config: new Proxy({},
     {
       get: (_, key: string) => ({
-        data: async () => fetch(`./static/${key}.json`).then((res) => res.json()),
+        data: async () => fetch(`./static/${key}.json?${Date.now()}`).then((res) => res.json()),
       }),
     }
   ),

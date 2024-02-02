@@ -1,19 +1,20 @@
 {
-  /* "include": [
-    "src"
-  ], */
+  "include": [
+    "src",
+    "docs",
+  ],
   "exclude": [
     "**/node_modules/**",
-    "**/lib/**",
   ],
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ES2017",
     "experimentalDecorators": true,
-    "module": "esnext",
-    // "rootDir": "./src" /* Specify the root folder within your source files. */,
+    "module": "ESNext",
+    "rootDirs": [
+      "src",
+      "docs",
+    ],
     "moduleResolution": "Node",
-    "declaration": true,
-    "declarationDir": "./lib",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

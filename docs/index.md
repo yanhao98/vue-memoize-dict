@@ -31,6 +31,10 @@ demo-preview=./demo-label.vue
 :::
 
 ### treeLabel()
+分隔符暂时是 `-`
+:::preview
+demo-preview=./demo-treeLabel.vue
+:::
 
 
 ### labels()

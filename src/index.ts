@@ -57,8 +57,8 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     const dict = this.get(dictName);
     return dict?.find((item) => item[this._valueFieldName] === value);
   }
-  public item(dictName: string, value: DictItem[keyof DictItem]): DictItem | undefined {
-    return this.find(dictName, value);
+  public item(...args: Parameters<typeof this.find>) {
+    return this.find(...args);
   }
 
   public label(dictName: string, value: DictItem[keyof DictItem]): string {
@@ -81,7 +81,7 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
       .map((value) => this.label(dictName, value));
   }
 
-  public fullLabel(dictName: string, value: DictItem[keyof DictItem]): string {
+  public treeLabel(dictName: string, value: DictItem[keyof DictItem]): string {
     if (!value) return '';
 
     const item = this.find(dictName, value);
@@ -99,9 +99,10 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
 
     return fullLabel
   }
-  public treeLabel(dictName: string, value: DictItem[keyof DictItem]): string {
-    return this.fullLabel(dictName, value);
+  public fullLabel(...args: Parameters<typeof this.treeLabel>) {
+    return this.treeLabel(...args);
   }
+
 
   private _fetch(dictName: string): Promise<DictItem[]> & { __computedAsyncRef__?: ReturnType<typeof computedAsync<DictItem[]>> } {
     const config = this.options.config[dictName];

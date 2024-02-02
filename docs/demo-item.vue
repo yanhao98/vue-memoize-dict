@@ -1,5 +1,5 @@
 <template>
-  {{ remoteDict.find("food", 1) }}
+  {{ remoteDict.item("food", 10) }}
 </template>
 <script setup lang="ts">
 import { remoteDict } from "./dict";

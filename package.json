@@ -1,12 +1,15 @@
 {
   "name": "vue-memoize-dict",
-  "version": "1.1.0",
-  "description": "Vue Memoize Dict",
+  "version": "1.1.1",
+  "description": "vue-memoize-dict is a Vue dictionary cache, support Vue2 and Vue3.",
+  "main": "lib/index.esm.js",
+  "typings": "lib/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
     "build": "pnpm run clean && rollup -c",
+    "watch": "rollup -c -w",
     "clean": "rimraf lib",
     "prepublishOnly": "pnpm run build",
     "docs:dev": "vitepress dev docs",
@@ -15,13 +18,17 @@
   },
   "author": "",
   "license": "ISC",
+  "homepage": "https://vue-memoize-dict.oo1.dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/yanhao98/vue-memoize-dict"
   },
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "typings": "lib/index.d.ts",
+  "peerDependencies": {
+    "vue": "^3.0.0-0 || ^2.7.0"
+  },
+  "dependencies": {
+    "vue-demi": ">=0.14.6"
+  },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
@@ -33,9 +40,6 @@
     "rollup": "^4.9.6",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3",
-    "vitepress": "1.0.0-rc.40"
-  },
-  "dependencies": {
-    "vue-demi": ">=0.14.6"
+    "vitepress": "1.0.0-rc.41"
   }
 }

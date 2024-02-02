@@ -1,30 +1,31 @@
-import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import typescript from "@rollup/plugin-typescript";
 import { defineConfig } from "rollup";
 import pkg from "./package.json" assert { type: "json" };
 
-const config = defineConfig({
-  input: "src/index.ts",
-  output: [
-    {
-      file: pkg.main,
-      format: "cjs",
-    },
-    {
-      file: pkg.module,
-      format: "esm",
-    },
-  ],
-  external: [
-    "vue-demi",
-    // "@vueuse/core"
-  ],
-  plugins: [
-    typescript({
-      rootDir: "src",
-    }),
-    nodeResolve(),
-  ],
-});
+const config = defineConfig([
+  {
+    input: "src/index.ts",
+    sourcemap: true,
+    output: [
+      {
+        file: pkg.main,
+        format: "esm",
+      },
+    ],
+    external: [
+      "vue-demi",
+      // "@vueuse/core"
+    ],
+    plugins: [
+      typescript({
+        rootDir: "src",
+        declaration: true,
+        declarationDir: pkg.typings.replace(/\/[^/]+$/, ""),
+      }),
+      nodeResolve(),
+    ],
+  },
+]);
 
 export default config;

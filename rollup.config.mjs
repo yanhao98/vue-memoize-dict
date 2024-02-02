@@ -8,10 +8,7 @@ const config = defineConfig([
     input: "src/index.ts",
     sourcemap: true,
     output: [
-      {
-        file: pkg.main,
-        format: "esm",
-      },
+      { format: "esm", file: pkg.main, },
     ],
     external: [
       "vue-demi",

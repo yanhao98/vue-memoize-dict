@@ -6,7 +6,6 @@ import pkg from "./package.json" assert { type: "json" };
 const config = defineConfig([
   {
     input: "src/index.ts",
-    // sourcemap: true,
     output: [
       { format: "esm", file: pkg.main, sourcemap: true },
     ],

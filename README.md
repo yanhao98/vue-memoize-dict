@@ -6,7 +6,9 @@ vue-memoize-dict is a Vue dictionary cache, support Vue2 and Vue3.
 
 https://vue-memoize-dict.oo1.dev/
 
-## Reference Links
+## Links
+<details>
+<summary>Reference Links</summary>
 
 - https://vueuse.org/core/useMemoize
 
@@ -32,5 +34,6 @@ https://vue-memoize-dict.oo1.dev/
 - decorators
   - https://juejin.cn/post/6844903876605280269
   - https://github.com/darrylhodgins/typescript-memoize
--
   - https://stackoverflow.com/a/71088004
+
+</details>

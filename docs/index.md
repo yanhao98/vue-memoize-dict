@@ -11,13 +11,18 @@ $ pnpm add vue-memoize-dict
 ## 新建字典对象 {#create-dict}
 dict.ts:
 
-<<< @/dict.ts{18-21}
+<<< @/dict.ts{19-20}
 
 ## API
 
 ### get()
 :::preview
 demo-preview=./demo-get.vue
+:::
+
+### tree()
+:::preview
+demo-preview=./demo-tree.vue
 :::
 
 ### item()

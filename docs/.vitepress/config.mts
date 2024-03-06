@@ -31,6 +31,7 @@ export default defineConfig({
     plugins: [],
     resolve: {
       alias: {
+        // FIXME: 如果 index.ts 中有相对路径的引用时存在问题。
         'vue-memoize-dict': path.resolve(__dirname, '../../', 'src/index.ts'),
       },
     }

@@ -1,7 +1,9 @@
-// https://github.com/yanhao98/vue-memoize-dict/blob/a1f73b60b0b51823ffb3dc5ed4606f3f8d0bb644/packages/playground/src/components/MemoizeDict.vue
 // https://github.dev/vueuse/vueuse/blob/main/packages/core/useMemoize/index.ts
 
 import { computedAsync, useMemoize } from "@vueuse/core";
+// import cloneDeep from 'lodash-es/cloneDeep';
+// import { cloneDeep } from 'lodash-es';
+
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options;
   private memoFetch;
@@ -23,6 +25,13 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     const cachedPromise = this.memoFetch.cache.get(dictName)!;
     cachedPromise!.__computedAsyncRef__ ??= computedAsync(() => cachedPromise);
     return cachedPromise!.__computedAsyncRef__.value;
+  }
+
+  public tree(dictName: string) {
+    return arrayToTree<DictItem>(this.get(dictName) || [], {
+      id: this._valueFieldName,
+      parentId: this._parentFieldName,
+    });
   }
 
   /**
@@ -140,3 +149,50 @@ interface DatasetOptions<DictItem> {
   fieldNames?: FieldNamesConfig<DictItem>;
 }
 
+
+// https://stackblitz.com/edit/typescript-flat-list-to-tree-demo?file=index.ts
+
+type TTree<T> = {
+  children?: TTree<T>[];
+} & T;
+
+/**
+ * flat list to tree
+ *
+ * @param list - a flat list
+ * @param params - `{ id, parentId }`: id name and parentId name
+ * @example `arrayToTree<IFolder>(folderArr, { id: 'folderId', parentId: 'folderParentId' });`
+ * @returns `TTree`
+ */
+const arrayToTree = <T>(
+  list: T[],
+  { id, parentId }: { id: any; parentId: any }
+): TTree<T>[] => {
+  /** map between id and array position */
+  const map: number[] = [];
+  // const treeList: TTree<T>[] = cloneDeep(list) as TTree<T>[];
+  const treeList: TTree<T>[] = JSON.parse(JSON.stringify(list)) as TTree<T>[];
+
+  for (let i = 0; i < treeList.length; i += 1) {
+    /** initialize the map */
+    map[(treeList[i] as TTree<T> & { [id: string]: number })[id]] = i;
+    /** initialize the children */
+    treeList[i].children = [];
+  }
+
+  let node: TTree<T> & { [parentId: string]: number };
+  /** return value */
+  const roots: TTree<T>[] = [];
+
+  for (const item of treeList) {
+    node = item as TTree<T> & { [parentId: string]: number };
+    if (node[parentId] !== 0) {
+      if (treeList[map[node[parentId]]] !== undefined) {
+        treeList[map[node[parentId]]].children?.push(node);
+      }
+    } else {
+      roots.push(node);
+    }
+  }
+  return roots;
+};

@@ -19,3 +19,8 @@
   border-radius: 0.25rem;
   cursor: pointer;
 }
+
+.vitepress-demo-preview__element-plus__container {
+  border-radius: 8px;
+  box-shadow: none;
+}

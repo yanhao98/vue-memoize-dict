@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitepress'
+import { containerPreview } from '@vitepress-demo-preview/plugin'
 import path from 'path'
-import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
+import { defineConfig } from 'vitepress'
 
 
 // https://vitepress.dev/reference/site-config
@@ -40,7 +40,7 @@ export default defineConfig({
     lineNumbers: true,
     config(md) {
       md.use(containerPreview)
-      md.use(componentPreview)
+      // md.use(componentPreview)
     }
   },
   lastUpdated: true,

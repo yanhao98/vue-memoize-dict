@@ -1,12 +1,14 @@
-import DefaultTheme from 'vitepress/theme'
-import './custom.css'
 import {
   // AntDesignContainer as DemoContainer,
-  ElementPlusContainer as DemoContainer,
   // NaiveUIContainer as DemoContainer,
+  ElementPlusContainer as DemoContainer,
 } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
+import DefaultTheme from 'vitepress/theme'
+
 import type { EnhanceAppContext } from 'vitepress'
+
+import './custom.css'
 
 export default {
   ...DefaultTheme,

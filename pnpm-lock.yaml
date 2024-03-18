@@ -33,7 +33,7 @@ devDependencies:
     version: 2.3.2(vitepress@1.0.0-rc.45)(vue@3.4.19)
   '@vitepress-demo-preview/plugin':
     specifier: ^1.2.2
-    version: 1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.45)(vue@3.4.19)
+    version: 1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.45)(vue@3.4.19)
   '@vueuse/core':
     specifier: ^10.7.2
     version: 10.9.0(vue@3.4.19)
@@ -1065,8 +1065,8 @@ packages:
       vue: 3.4.19(typescript@5.3.3)
     dev: true
 
-  /@vitepress-demo-preview/plugin@1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.45)(vue@3.4.19):
-    resolution: {integrity: sha512-Gpw5fmiv8UkYStqNRcVr235NAVrXzO6MKdeuWbqvIoKzS2uLb7nhm4aL+rlXGxKOWP+UcHnpg/fl3+brUUejTw==}
+  /@vitepress-demo-preview/plugin@1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.45)(vue@3.4.19):
+    resolution: {integrity: sha512-uUb6UNkcRZnA+bwIEJV9fnpwnF6v3bow+9iQAOgFWdcwiII6/kT2c21RYe8ywmoIlBkniJmlqo+qeU4Mi8rx/Q==}
     peerDependencies:
       markdown-it-container: ^3.0.0
       vitepress: '*'

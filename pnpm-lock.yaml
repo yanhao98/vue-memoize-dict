@@ -7,7 +7,7 @@ settings:
 dependencies:
   vue:
     specifier: ^3.0.0-0 || ^2.7.0
-    version: 3.4.19(typescript@5.4.2)
+    version: 3.4.19(typescript@5.4.3)
   vue-demi:
     specifier: '>=0.14.6'
     version: 0.14.7(vue@3.4.19)
@@ -18,7 +18,7 @@ devDependencies:
     version: 15.2.3(rollup@4.13.0)
   '@rollup/plugin-typescript':
     specifier: ^11.1.6
-    version: 11.1.6(rollup@4.13.0)(tslib@2.6.2)(typescript@5.4.2)
+    version: 11.1.6(rollup@4.13.0)(tslib@2.6.2)(typescript@5.4.3)
   '@types/lodash-es':
     specifier: ^4.17.12
     version: 4.17.12
@@ -57,13 +57,13 @@ devDependencies:
     version: 2.6.2
   typescript:
     specifier: ^5.3.3
-    version: 5.4.2
+    version: 5.4.3
   vite:
     specifier: ^5.1.5
     version: 5.1.6(@types/node@20.11.28)
   vitepress:
     specifier: 1.0.0-rc.45
-    version: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.2)
+    version: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.3)
 
 packages:
 
@@ -836,7 +836,7 @@ packages:
       rollup: 4.13.0
     dev: true
 
-  /@rollup/plugin-typescript@11.1.6(rollup@4.13.0)(tslib@2.6.2)(typescript@5.4.2):
+  /@rollup/plugin-typescript@11.1.6(rollup@4.13.0)(tslib@2.6.2)(typescript@5.4.3):
     resolution: {integrity: sha512-R92yOmIACgYdJ7dJ97p4K69I8gg6IEHt8M7dUBxN3W6nrO8uUxX5ixl0yU/N3aZTi8WhPuICvOHXQvF6FaykAA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -853,7 +853,7 @@ packages:
       resolve: 1.22.8
       rollup: 4.13.0
       tslib: 2.6.2
-      typescript: 5.4.2
+      typescript: 5.4.3
     dev: true
 
   /@rollup/pluginutils@5.1.0(rollup@4.13.0):
@@ -1039,7 +1039,7 @@ packages:
       '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.24.0)
       '@vue/babel-plugin-jsx': 1.2.1(@babel/core@7.24.0)
       vite: 5.1.6(@types/node@20.11.28)
-      vue: 3.4.19(typescript@5.4.2)
+      vue: 3.4.19(typescript@5.4.3)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1052,7 +1052,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: 5.1.6(@types/node@20.11.28)
-      vue: 3.4.19(typescript@5.4.2)
+      vue: 3.4.19(typescript@5.4.3)
     dev: true
 
   /@vitepress-demo-preview/component@2.3.2(vitepress@1.0.0-rc.45)(vue@3.4.19):
@@ -1061,8 +1061,8 @@ packages:
       vitepress: '*'
       vue: ^3.2.0
     dependencies:
-      vitepress: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.2)
-      vue: 3.4.19(typescript@5.4.2)
+      vitepress: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.3)
+      vue: 3.4.19(typescript@5.4.3)
     dev: true
 
   /@vitepress-demo-preview/plugin@1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.45)(vue@3.4.19):
@@ -1075,8 +1075,8 @@ packages:
       '@flypeng/tool': 5.5.2
       markdown-it: 13.0.2
       markdown-it-container: 3.0.0
-      vitepress: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.2)
-      vue: 3.4.19(typescript@5.4.2)
+      vitepress: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.3)
+      vue: 3.4.19(typescript@5.4.3)
     dev: true
 
   /@vue/babel-helper-vue-transform-on@1.2.1:
@@ -1206,7 +1206,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.4.19
       '@vue/shared': 3.4.19
-      vue: 3.4.19(typescript@5.4.2)
+      vue: 3.4.19(typescript@5.4.3)
 
   /@vue/shared@3.4.19:
     resolution: {integrity: sha512-/KliRRHMF6LoiThEy+4c1Z4KB/gbPrGjWwJR+crg2otgrf/egKzRaCPvJ51S5oetgsgXLfc4Rm5ZgrKHZrtMSw==}
@@ -2061,8 +2061,8 @@ packages:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: true
 
-  /typescript@5.4.2:
-    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
+  /typescript@5.4.3:
+    resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2121,7 +2121,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress@1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.2):
+  /vitepress@1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.3):
     resolution: {integrity: sha512-/OiYsu5UKpQKA2c0BAZkfyywjfauDjvXyv6Mo4Ra57m5n4Bxg1HgUGoth1CLH2vwUbR/BHvDA9zOM0RDvgeSVQ==}
     hasBin: true
     peerDependencies:
@@ -2147,7 +2147,7 @@ packages:
       minisearch: 6.3.0
       shiki: 1.1.7
       vite: 5.1.6(@types/node@20.11.28)
-      vue: 3.4.19(typescript@5.4.2)
+      vue: 3.4.19(typescript@5.4.3)
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
@@ -2188,9 +2188,9 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: 3.4.19(typescript@5.4.2)
+      vue: 3.4.19(typescript@5.4.3)
 
-  /vue@3.4.19(typescript@5.4.2):
+  /vue@3.4.19(typescript@5.4.3):
     resolution: {integrity: sha512-W/7Fc9KUkajFU8dBeDluM4sRGc/aa4YJnOYck8dkjgZoXtVsn3OeTGni66FV1l3+nvPA7VBFYtPioaGKUmEADw==}
     peerDependencies:
       typescript: '*'
@@ -2203,7 +2203,7 @@ packages:
       '@vue/runtime-dom': 3.4.19
       '@vue/server-renderer': 3.4.19(vue@3.4.19)
       '@vue/shared': 3.4.19
-      typescript: 5.4.2
+      typescript: 5.4.3
 
   /which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}

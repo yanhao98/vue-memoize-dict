@@ -1,8 +1,7 @@
 // https://github.dev/vueuse/vueuse/blob/main/packages/core/useMemoize/index.ts
 
 import { computedAsync, useMemoize } from "@vueuse/core";
-// import cloneDeep from 'lodash-es/cloneDeep';
-// import { cloneDeep } from 'lodash-es';
+
 
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options;
@@ -170,8 +169,14 @@ const arrayToTree = <T>(
 ): TTree<T>[] => {
   /** map between id and array position */
   const map: number[] = [];
-  // const treeList: TTree<T>[] = cloneDeep(list) as TTree<T>[];
+
+  // [深拷贝](https://baijiahao.baidu.com/s?id=1765652696079292086&wfr=spider&for=pc)
   const treeList: TTree<T>[] = JSON.parse(JSON.stringify(list)) as TTree<T>[];
+  // const treeList: TTree<T>[] = cloneDeep(list) as TTree<T>[];
+
+  // console.debug('list :>> ', JSON.stringify(list, null, 2), list);
+  // console.debug(`list :>> `, list);
+  // console.debug(`treeList :>> `, treeList);
 
   for (let i = 0; i < treeList.length; i += 1) {
     /** initialize the map */

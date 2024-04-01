@@ -30,6 +30,7 @@
     "vue-demi": "^0.14.7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.42.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "ts5.4",

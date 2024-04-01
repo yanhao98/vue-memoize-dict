@@ -24,7 +24,12 @@ export const remoteDict = new MemoizeDict<DictData>({
   ),
 });
 
+declare global {
+  interface Window {
+    remoteDict: MemoizeDict<DictData>;
+  }
+}
+
 if (typeof window !== 'undefined') {
-  // @ts-ignore
   window.remoteDict = remoteDict;
 }

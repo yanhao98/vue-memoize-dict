@@ -30,10 +30,10 @@ devDependencies:
     version: 3.1.0(vite@5.2.7)(vue@3.4.21)
   '@vitepress-demo-preview/component':
     specifier: ^2.3.2
-    version: 2.3.2(vitepress@1.0.1)(vue@3.4.21)
+    version: 2.3.2(vitepress@1.0.2)(vue@3.4.21)
   '@vitepress-demo-preview/plugin':
     specifier: ^1.2.3
-    version: 1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.1)(vue@3.4.21)
+    version: 1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.2)(vue@3.4.21)
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.21)
@@ -54,7 +54,7 @@ devDependencies:
     version: 5.4.3
   vitepress:
     specifier: ^1.0.1
-    version: 1.0.1(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3)
+    version: 1.0.2(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3)
 
 packages:
 
@@ -1060,17 +1060,17 @@ packages:
       vue: 3.4.21(typescript@5.4.3)
     dev: true
 
-  /@vitepress-demo-preview/component@2.3.2(vitepress@1.0.1)(vue@3.4.21):
+  /@vitepress-demo-preview/component@2.3.2(vitepress@1.0.2)(vue@3.4.21):
     resolution: {integrity: sha512-+GCYl3eHA7uoBGZyH2nTP1uab6pHFGEdykj5bSz4Nt2carH05xomBf18kBecuK1SncSqB7kWV/6JHT2Y349NbQ==}
     peerDependencies:
       vitepress: '*'
       vue: ^3.2.0
     dependencies:
-      vitepress: 1.0.1(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3)
+      vitepress: 1.0.2(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3)
       vue: 3.4.21(typescript@5.4.3)
     dev: true
 
-  /@vitepress-demo-preview/plugin@1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.1)(vue@3.4.21):
+  /@vitepress-demo-preview/plugin@1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.2)(vue@3.4.21):
     resolution: {integrity: sha512-uUb6UNkcRZnA+bwIEJV9fnpwnF6v3bow+9iQAOgFWdcwiII6/kT2c21RYe8ywmoIlBkniJmlqo+qeU4Mi8rx/Q==}
     peerDependencies:
       markdown-it-container: ^3.0.0
@@ -1080,7 +1080,7 @@ packages:
       '@flypeng/tool': 5.5.2
       markdown-it: 13.0.2
       markdown-it-container: 3.0.0
-      vitepress: 1.0.1(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3)
+      vitepress: 1.0.2(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3)
       vue: 3.4.21(typescript@5.4.3)
     dev: true
 
@@ -2033,8 +2033,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress@1.0.1(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-eNr5pOBppYUUjEhv8S0S2t9Tv95LQ6mMeHj6ivaGwfHxpov70Vduuwl/QQMDRznKDSaP0WKV7a82Pb4JVOaqEw==}
+  /vitepress@1.0.2(@algolia/client-search@4.23.2)(@types/node@20.12.2)(search-insights@2.13.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-bEj9yTEdWyewJFOhEREZF+mXuAgOq27etuJZT6DZSp+J3XpQstXMJc5piSVwhZBtuj8OfA0iXy+jdP1c71KMYQ==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4

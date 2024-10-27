@@ -1,0 +1,12 @@
+on:
+  push:
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: yanhao98/composite-actions/setup-node-environment@main
+      - run: pnpm test

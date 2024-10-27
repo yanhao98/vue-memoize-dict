@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { MemoizeDict } from '.';
 
 describe('MemoizeDict', () => {
-
   type DictData = {
     id: number;
     label: string;
@@ -23,7 +22,7 @@ describe('MemoizeDict', () => {
       return new Promise<DictData[]>((resolve) => {
         setTimeout(() => {
           resolve(mockData);
-        }, 100);
+        }, 50);
       });
     })
   });
@@ -49,7 +48,7 @@ describe('MemoizeDict', () => {
     expect(memoizeDict.get('test')).toBeUndefined();
     expect(dataFunc).toHaveBeenCalledWith('test');
     expect(dataFunc).toBeCalledTimes(1);
-    await new Promise((resolve) => setTimeout(resolve, 101));
+    await new Promise((resolve) => setTimeout(resolve, 51));
     expect(memoizeDict.get('test')).toBe(mockData);
     expect(dataFunc).toBeCalledTimes(1);
   });
@@ -147,9 +146,6 @@ describe('MemoizeDict', () => {
     await new Promise((resolve) => setTimeout(resolve, 101));
     expect(memoizeDict.get('test')).toBe(mockData);
   });
-
-
-
 });
 
 

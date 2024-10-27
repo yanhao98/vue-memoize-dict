@@ -1,25 +1,16 @@
 {
-  "exclude": [
-    "**/node_modules/**",
-  ],
   "compilerOptions": {
-    "target": "ES2017",
-    "experimentalDecorators": true,
+    "target": "ES2021",
+    "lib": ["DOM", "ES2021"],
     "module": "ESNext",
-    "rootDirs": [
-      "src",
-      "docs",
-    ],
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "strict": true,
-    "skipDefaultLibCheck": false,
     "skipLibCheck": true,
-    "paths": {
-      "vue-memoize-dict": [
-        "./src/index.ts"
-      ],
-    }
-  }
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+    "useDefineForClassFields": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["src"]
 }

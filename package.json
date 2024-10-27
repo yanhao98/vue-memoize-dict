@@ -1,23 +1,26 @@
 {
   "packageManager": "pnpm@9.12.2",
   "name": "vue-memoize-dict",
-  "version": "1.1.3",
   "description": "vue-memoize-dict is a Vue dictionary cache, support Vue2 and Vue3.",
-  "main": "lib/index.esm.js",
-  "typings": "lib/index.d.ts",
+  "version": "1.1.3",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "build": "pnpm run clean && rollup -c",
-    "watch": "rollup -c -w",
-    "clean": "rimraf lib",
+    "build": "tsup",
     "prepublishOnly": "pnpm run build",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "dev": "vitest dev --root=src",
-    "test": "vitest test --coverage --root=src"
+    "dev": "vitest --coverage --coverage.include=src/**.ts",
+    "test": "vitest --coverage --root=src",
+    "test:ui": "vitest --ui"
   },
   "author": "",
   "license": "",
@@ -30,34 +33,12 @@
     "@vueuse/core": ">8.0.0",
     "vue": ">2.7.0"
   },
-  "peerDependenciesMeta": {
-    "@vueuse/core": {
-      "optional": false
-    },
-    "vue": {
-      "optional": false
-    }
-  },
-  "dependencies": {
-    "vue-demi": "^0.14.7"
-  },
   "devDependencies": {
-    "@playwright/test": "^1.42.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/node": "ts5.4",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "@vitepress-demo-preview/component": "^2.3.2",
-    "@vitepress-demo-preview/plugin": "^1.2.3",
+    "@types/node": "~22.8.1",
     "@vitest/coverage-v8": "2.1.3",
-    "@vueuse/core": "^10.9.0",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.13.2",
-    "rollup-plugin-cleanup": "^3.2.1",
-    "tslib": "^2.6.2",
-    "typescript": "^5.4.3",
-    "vitepress": "^1.0.1",
-    "vitest": "^2.1.3",
-    "vue": "^3.5.12"
+    "@vitest/ui": "2.1.3",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
   }
 }

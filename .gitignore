@@ -2,7 +2,7 @@
 node_modules
 dist
 
-/coverage
+/src/coverage
 /src/client/shared.ts
 /src/node/shared.ts
 *.log

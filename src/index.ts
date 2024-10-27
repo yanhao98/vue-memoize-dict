@@ -2,6 +2,16 @@
 
 import { computedAsync, useMemoize } from "@vueuse/core";
 
+// TODO: rslib
+// TODO: createMemoizeDict
+// function createMemoizeDict() {
+//   return {
+//     data: xx,
+//     toTree: xx,
+//     fetch: xx,
+//     load: xx,
+//   }
+// }
 
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options;
@@ -98,7 +108,7 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
     let fullLabel = this.label(dictName, value);
     let currentItem = item;
 
-    while (currentItem[this._parentFieldName]) {
+    while (currentItem[this._parentFieldName] && currentItem[this._parentFieldName] !== currentItem[this._valueFieldName]) {
       const parentItem = this.find(dictName, currentItem[this._parentFieldName]);
       if (!parentItem) break;
       fullLabel = `${this.label(dictName, parentItem[this._labelFieldName])}-${fullLabel}`;
@@ -107,10 +117,6 @@ export class MemoizeDict<DictItem = Record<string, unknown>> {
 
     return fullLabel
   }
-  public fullLabel(...args: Parameters<typeof this.treeLabel>) {
-    return this.treeLabel(...args);
-  }
-
 
   private _fetch(dictName: string): Promise<DictItem[]> & { __computedAsyncRef__?: ReturnType<typeof computedAsync<DictItem[]>> } {
     const config = this.options.config[dictName];

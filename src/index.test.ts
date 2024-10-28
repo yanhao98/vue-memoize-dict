@@ -281,24 +281,29 @@ describe('createMemoizeDict', () => {
       return mockData;
     })
 
-    const memoizeDict = createMemoizeDict({
-      config: new Proxy({},
-        {
-          get: (_, key: string) => ({
-            data: async () => {
-              return dataFunc(key);
-            },
-          }),
-        }
-      ),
+    const memoizeDict = createMemoizeDict<{ label: string; value: number; parent: number; }>({
+      config: new Proxy({}, {
+        get: (_, key: string) => ({
+          data: async () => {
+            return dataFunc(key);
+          },
+        }),
+      }),
     })
 
-    expect(memoizeDict('test').data).toBeUndefined();
-    while (!memoizeDict('test').data) {
+    while (!memoizeDict('test-create').data) {
       await new Promise((resolve) => setTimeout(resolve, 1));
     }
-    expect(memoizeDict('test').data).toBe(mockData);
-    expect(memoizeDict('test').tree).toEqual(mockDataTree);
-    expect(dataFunc).toBeCalledTimes(1);
+    expect(memoizeDict('test-create').data).toBe(mockData);
+    expect(memoizeDict('test-create').tree).toEqual(mockDataTree);
+    expect(await memoizeDict('test-create').fetch()).toBe(mockData);// 不会再次调用 dataFunc，也就是从缓存中取
+    expect(memoizeDict('test-create').itemByValue(11)).toBe(mockData[1]);
+    expect(memoizeDict('test-create').labelByValue(11)).toBe('Item 1-1');
+    expect(memoizeDict('test-create').labelsByValues([11, 111])).toEqual(['Item 1-1', 'Item 1-1-1']);
+    expect(memoizeDict('test-create').treeLabelByValue(111)).toBe('Item 1-Item 1-1-Item 1-1-1');
+
+    expect(await memoizeDict('test-create').load()).toBe(mockData);// 会再次调用 dataFunc，并更新缓存
+    expect(memoizeDict('test-create').data).toBeUndefined();
+    expect(dataFunc).toBeCalledTimes(2);
   })
 })

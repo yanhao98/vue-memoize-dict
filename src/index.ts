@@ -207,3 +207,14 @@ const arrayToTree = <T>(
   }
   return roots;
 };
+
+export function createMemoizeDict<DictItem>(options: DatasetOptions<DictItem>) {
+  const memoizeDict = new MemoizeDict(options);
+  return (dictName: string) => {
+    return {
+      get data() {
+        return memoizeDict.get(dictName);
+      }
+    }
+  }
+}

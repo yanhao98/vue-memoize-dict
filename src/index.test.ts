@@ -1,5 +1,47 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { MemoizeDict } from '.';
+import { createMemoizeDict, MemoizeDict } from '.';
+
+const mockData = [
+  { label: 'Item 1', value: 10, parent: 0 },
+  { label: 'Item 1-1', value: 11, parent: 10 },
+  { label: 'Item 1-1-1', value: 111, parent: 11 },
+  { label: 'Item 999', value: 999, parent: 998 },// 没有父级
+  { label: 'Item 888', value: 888, parent: 888 },// 父级等于自己(这种应该是不合理的)
+]
+const mockDataTree = [
+  {
+    label: 'Item 1',
+    value: 10,
+    parent: 0,
+    children: [
+      {
+        label: 'Item 1-1',
+        value: 11,
+        parent: 10,
+        children: [
+          {
+            label: 'Item 1-1-1',
+            value: 111,
+            parent: 11,
+            children: []
+          }
+        ]
+      }
+    ]
+  },
+  // {
+  //   label: 'Item 999',
+  //   value: 999,
+  //   parent: 998,
+  //   children: []
+  // },
+  // {
+  //   label: 'Item 888',
+  //   value: 888,
+  //   parent: 888,
+  //   children: []
+  // }
+]
 
 describe('MemoizeDict', () => {
   type DictData = {
@@ -225,7 +267,38 @@ describe('特殊情况的处理', () => {
   });
 
   it('values() 不传数组', async () => {
-    expect( memoizeDict.labels('test', 2 as any) ).toEqual(2);
+    expect(memoizeDict.labels('test', 2 as any)).toEqual(2);
     expect(console.error).toBeCalledTimes(1);
   });
 });
+
+
+describe('createMemoizeDict', () => {
+  it('createMemoizeDict usage', async () => {
+    const dataFunc = vi.fn();
+    dataFunc.mockImplementation(async (dictName: string) => {
+      await new Promise((resolve) => setTimeout(resolve, 33));
+      return mockData;
+    })
+
+    const memoizeDict = createMemoizeDict({
+      config: new Proxy({},
+        {
+          get: (_, key: string) => ({
+            data: async () => {
+              return dataFunc(key);
+            },
+          }),
+        }
+      ),
+    })
+
+    expect(memoizeDict('test').data).toBeUndefined();
+    while (!memoizeDict('test').data) {
+      await new Promise((resolve) => setTimeout(resolve, 1));
+    }
+    expect(memoizeDict('test').data).toBe(mockData);
+    expect(memoizeDict('test').tree).toEqual(mockDataTree);
+    expect(dataFunc).toBeCalledTimes(1);
+  })
+})

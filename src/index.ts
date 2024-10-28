@@ -2,17 +2,6 @@
 
 import { computedAsync, useMemoize } from "@vueuse/core";
 
-// TODO: rslib
-// TODO: createMemoizeDict
-// function createMemoizeDict() {
-//   return {
-//     data: xx,
-//     toTree: xx,
-//     fetch: xx,
-//     load: xx,
-//   }
-// }
-
 export class MemoizeDict<DictItem = Record<string, unknown>> {
   private options;
   private memoFetch;
@@ -210,11 +199,21 @@ const arrayToTree = <T>(
 
 export function createMemoizeDict<DictItem>(options: DatasetOptions<DictItem>) {
   const memoizeDict = new MemoizeDict(options);
-  return (dictName: string) => {
+  const rtn = (dictName: string) => {
     return {
       get data() {
         return memoizeDict.get(dictName);
-      }
+      },
+      get tree() {
+        return memoizeDict.tree(dictName);
+      },
+      fetch: memoizeDict.fetch.bind(memoizeDict, dictName),
+      load: memoizeDict.load.bind(memoizeDict, dictName),
+      itemByValue: memoizeDict.item.bind(memoizeDict, dictName),
+      labelByValue: memoizeDict.label.bind(memoizeDict, dictName),
+      labelsByValues: memoizeDict.labels.bind(memoizeDict, dictName),
+      treeLabelByValue: memoizeDict.treeLabel.bind(memoizeDict, dictName),
     }
-  }
+  };
+  return rtn;
 }

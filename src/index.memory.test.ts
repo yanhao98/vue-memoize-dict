@@ -9,7 +9,8 @@ const options = {
     }),
   }),
 };
-describe('Memory test: createMemoizeDict', () => {
+
+describe.skipIf(!process.env.CI)('Memory test: createMemoizeDict', () => {
   const memoizeDict = createMemoizeDict(options);
 
   test('check memory usage', async () => {
@@ -28,9 +29,7 @@ describe('Memory test: createMemoizeDict', () => {
   });
 });
 
-
-
-describe('Memory test: MemoizeDict', () => {
+describe.skipIf(!process.env.CI)('Memory test: MemoizeDict', () => {
   const memoizeDict = new MemoizeDict(options);
 
   test('check memory usage', async () => {

@@ -17,7 +17,7 @@ describe('Memory test: createMemoizeDict', () => {
     const startMemory = process.memoryUsage().heapUsed;
     console.debug('Memory used:', `start: ${startMemory / 1024 / 1024} MB`);
 
-    for (let i = 0; i < 101; i++) {
+    for (let i = 0; i < 10101; i++) {
       memoizeDict('test' + i).data;
     }
     while (!memoizeDict('test99').data) {
@@ -38,7 +38,7 @@ describe('Memory test: MemoizeDict', () => {
     const startMemory = process.memoryUsage().heapUsed;
     console.debug('Memory used:', `start: ${startMemory / 1024 / 1024} MB`);
 
-    for (let i = 0; i < 101; i++) {
+    for (let i = 0; i < 10101; i++) {
       memoizeDict.get('test' + i);
     }
     while (!memoizeDict.get('test99')) {

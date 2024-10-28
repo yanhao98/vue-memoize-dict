@@ -15,5 +15,5 @@ jobs:
       - uses: yanhao98/composite-actions/setup-node-environment@main
       - run: pnpm test
       - run: pnpm build
-      - run: pnpx pkg-pr-new publish --compact # https://github.com/stackblitz-labs/pkg.pr.new?tab=readme-ov-file#setup
       - run: pnpx pkg-pr-new publish
+      # - run: pnpx pkg-pr-new publish --compact # https://github.com/stackblitz-labs/pkg.pr.new?tab=readme-ov-file#setup

@@ -14,13 +14,10 @@ jobs:
       - uses: actions/checkout@main
       - uses: yanhao98/composite-actions/setup-node-environment@main
       - run: pnpm test
-      - name: "Memory test: createMemoizeDict"
+      - name: "Memory test"
         run: |
-          npx vitest run --testNamePattern "Memory test: createMemoizeDict"
-      - name: "Memory test: MemoizeDict"
-        run: |
-          npx vitest run --testNamePattern "Memory test: MemoizeDict"
-
+          npx vitest run --testNamePattern "Memory test: createMemoizeDict";
+          npx vitest run --testNamePattern "Memory test: MemoizeDict";
       - run: pnpm build
       - run: pnpx pkg-pr-new publish
       # - run: pnpx pkg-pr-new publish --compact # https://github.com/stackblitz-labs/pkg.pr.new?tab=readme-ov-file#setup

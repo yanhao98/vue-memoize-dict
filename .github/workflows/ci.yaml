@@ -1,6 +1,9 @@
 name: CI
 on:
+  pull_request:
   push:
+    branches:
+      - "**"
 env:
   TZ: Asia/Shanghai
 
@@ -11,3 +14,5 @@ jobs:
       - uses: actions/checkout@main
       - uses: yanhao98/composite-actions/setup-node-environment@main
       - run: pnpm test
+      - run: pnpm build
+      - run: pnpx pkg-pr-new publish --compact # https://github.com/stackblitz-labs/pkg.pr.new?tab=readme-ov-file#setup

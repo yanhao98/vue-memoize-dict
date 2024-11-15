@@ -1,0 +1,19 @@
+name: Release and publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:           # Job-level permissions configuration starts here
+      id-token: write      # npm provenance requires this permission
+      contents: write      # to be able to publish a GitHub release
+      issues: write        # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+    steps:
+      - uses: yanhao98/composite-actions/setup-node-environment@main
+      - uses: yanhao98/semantic-release-action@main
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

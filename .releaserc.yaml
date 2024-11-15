@@ -1,0 +1,20 @@
+---
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - "@semantic-release/changelog"
+  # #############################
+  # https://github.com/semantic-release/npm?tab=readme-ov-file#environment-variables
+  # #############################
+  - - "@semantic-release/npm"
+    # [provenance](https://docs.npmjs.com/generating-provenance-statements#using-third-party-package-publishing-tools)
+    - npmPublish: true
+  # #############################
+  # https://github.com/semantic-release/github?tab=readme-ov-file#configuration
+  # #############################
+  - "@semantic-release/github"
+  - - "@semantic-release/git"
+    - message: |-
+        chore(release): ${nextRelease.version} [skip ci]
+
+        ${nextRelease.notes}
